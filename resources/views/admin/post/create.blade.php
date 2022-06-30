@@ -27,12 +27,22 @@
                         @csrf
                         <div class="form-group">
                             <label>Название</label>
-                            <input type="text" class="form-control" name="title" placeholder="Название тэга">
+                            <input type="text" class="form-control" name="title" placeholder="Название тэга" value="{{ old('title') }}">
                             @error('title')
                             <div class="text-danger">Это поле необходимо для заполнения</div>
                             @enderror
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Добавить">
+                        <div class="form-group">
+                            <textarea name="content" id="summernote" cols="30" rows="10">
+                            {{ old('content') }}
+                            </textarea>
+                            @error('content')
+                            <div class="text-danger">Это поле необходимо для заполнения</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Добавить">
+                        </div>
                     </form>
                 </div>
             </div>
