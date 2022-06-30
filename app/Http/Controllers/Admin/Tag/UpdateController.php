@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Tag;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\UpdateRequest;
+use App\Http\Requests\Admin\Tag\UpdateRequest;
 use App\Models\Tag;
 
 class UpdateController extends Controller

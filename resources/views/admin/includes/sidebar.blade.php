@@ -27,6 +27,15 @@ with font-awesome or any other icon font library -->
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="{{ route('admin.post.index') }}" class="nav-link">
+                            <i class="nav-icon far fa-clipboard"></i>
+                            <p>
+                                Статьи
+                            </p>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.sidebar -->
