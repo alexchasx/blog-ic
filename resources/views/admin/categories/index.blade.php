@@ -65,6 +65,13 @@
                                                     </td>
                                                     <td><a href="{{ route('admin.category.show', $category->id) }}">Show</a></td>
                                                     <td><a href="{{ route('admin.category.edit', $category->id) }}">Edit</a></td>
+                                                    <td>
+                                                        <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-button text-danger">Удалить</button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

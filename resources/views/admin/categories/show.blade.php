@@ -15,6 +15,13 @@
                     <div class="col-5 mb-3">
                         <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-block btn-primary">Редактировать</a>
                     </div>
+                    <div class="col-5 mb-3">
+                        <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-block btn-danger">Удалить</button>
+                        </form>
+                    </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
