@@ -8,7 +8,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Категории</h1>
+                    <h1 class="m-0">
+                        {{ $category->title }}
+                    </h1>
+
+                    <div class="col-5 mb-3">
+                        <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-block btn-primary">Редактировать</a>
+                    </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,9 +32,6 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-3 mb-3">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-block btn-primary">Добавить</a>
-                </div>
                 <div class="col-12">
                     <div class="card">
                         <!-- /.card-header -->
@@ -41,32 +44,26 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
-                                            <thead>
-                                                <tr>
-                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                        ID
-                                                    </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                        Название
-                                                    </th>
-                                                    <th class="sorting" colspan="2" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                        Действие
-                                                    </th>
-                                                </tr>
-                                            </thead>
+
                                             <tbody>
-                                                @foreach($categories as $category)
+
                                                 <tr class="odd">
                                                     <td class="dtr-control sorting_1" tabindex="0">
+                                                        ID
+                                                    </td>
+                                                    <td>
                                                         {{ $category->id }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="odd">
+                                                    <td class="dtr-control sorting_1" tabindex="0">
+                                                        Название
                                                     </td>
                                                     <td>
                                                         {{ $category->title }}
                                                     </td>
-                                                    <td><a href="{{ route('admin.category.show', $category->id) }}">Show</a></td>
-                                                    <td><a href="{{ route('admin.category.edit', $category->id) }}">Edit</a></td>
                                                 </tr>
-                                                @endforeach
+
                                             </tbody>
                                         </table>
                                     </div>
