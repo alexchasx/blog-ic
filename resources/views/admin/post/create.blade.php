@@ -23,7 +23,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.post.store') }}" method="POST">
+                    <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Название</label>
@@ -39,6 +39,38 @@
                             @error('content')
                             <div class="text-danger">Это поле необходимо для заполнения</div>
                             @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Добавить превью</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="preview_image">
+                                    <label class="custom-file-label">Выберите изображение</label>
+
+                                    @error('preview_image')
+                                    <div class="text-danger">Это поле необходимо для заполнения</div>
+                                    @enderror
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Загрузка</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Добавить главное изображение</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="main_image">
+                                    <label class="custom-file-label">Выберите изображение</label>
+
+                                    @error('main_image')
+                                    <div class="text-danger">Это поле необходимо для заполнения</div>
+                                    @enderror
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Загрузка</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Добавить">
