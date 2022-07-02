@@ -27,7 +27,7 @@
                         @csrf
                         <div class="form-group">
                             <label>Название</label>
-                            <input type="text" class="form-control" name="title" placeholder="Название тэга" value="{{ old('title') }}">
+                            <input type="text" class="form-control" name="title" placeholder="Название статьи" value="{{ old('title') }}">
                             @error('title')
                             <div class="text-danger">Это поле необходимо для заполнения</div>
                             @enderror
@@ -80,6 +80,17 @@
                                     {{ $category->title }}
                                 </option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Тэги</label>
+                            <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Выберите тэги" style="width: 100%;">
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}"
+                                {{ is_array( old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : '' }}>
+                                    {{ $tag->title }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                         <div class="form-group">
