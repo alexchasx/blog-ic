@@ -23,18 +23,91 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.post.update', $post->id) }}" method="POST">
+                    <form action="{{ route('admin.post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
+
                         <div class="form-group">
-                            <label>Название</label>
-                            <input type="text" class="form-control" name="title"
-                                placeholder="Название категории" value="{{ $post->title }}">
+                            <input type="text" class="form-control" name="title" placeholder="Название статьи" value="{{ old('title', $post->title) }}">
                             @error('title')
                             <div class="text-danger">Это поле необходимо для заполнения</div>
                             @enderror
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Обновить">
+
+                        <div class="form-group">
+                            <textarea name="content" id="summernote" cols="30" rows="10">
+                            {{ old('content', $post->content) }}
+                            </textarea>
+                            @error('content')
+                            <div class="text-danger">Это поле необходимо для заполнения</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Добавить превью</label>
+                            <div class="w-25 mb-2">
+                                <img src="{{ Storage::url($post->preview_image) }}" alt="preview_image" class="w-50">
+                            </div>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="preview_image" value="{{ old('preview_image', $post->preview_image) }}">
+                                    <label class="custom-file-label">Выберите изображение</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Загрузка</span>
+                                </div>
+                            </div>
+                            @error('preview_image')
+                            <div class="text-danger">Это поле необходимо для заполнения</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Добавить главное изображение</label>
+                            <div class="w-25 mb-2">
+                                <img src="{{ Storage::url($post->main_image) }}" alt="main_image" class="w-50">
+                            </div>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="main_image" value="{{ old('main_image', $post->main_image) }}">
+                                    <label class="custom-file-label">Выберите изображение</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Загрузка</span>
+                                </div>
+                            </div>
+                            @error('main_image')
+                            <div class="text-danger">Это поле необходимо для заполнения</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Категории</label>
+                            <select class="form-control w-50" name="category_id">
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id ==  $post->category_id ? ' selected' : '' }}>
+                                    {{ $category->title }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Тэги</label>
+                            <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Выберите тэги" style="width: 100%;">
+                                @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}" {{ is_array( $post->tags->pluck('id')->toArray())
+                                    && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? ' selected' : '' }}>
+                                    {{ $tag->title }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Обновить">
+                        </div>
+
                     </form>
                 </div>
             </div>
