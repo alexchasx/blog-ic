@@ -20,7 +20,7 @@ Route::get('/', IndexController::class);
 Route::group([
         'namespace' => '\App\Http\Controllers\Admin',
         'prefix' => 'admin',
-        'middleware' => ['auth', 'admin'],
+        'middleware' => ['auth', 'admin', 'verified'],
     ], function () {
 
         Route::group(['namespace' => 'Main'], function () {
