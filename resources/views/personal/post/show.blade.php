@@ -8,13 +8,20 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Пользователи</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Админка</a></li>
-                        <li class="breadcrumb-item active">Пользователи</li>
-                    </ol>
+                    <h1 class="m-0">
+                        {{ $post->title }}
+                    </h1>
+
+                    <div class="col-5 mb-3">
+                        <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-block btn-primary">Редактировать</a>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-block btn-danger">Удалить</button>
+                        </form>
+                    </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -26,9 +33,6 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-3 mb-3">
-                    <a href="{{ route('admin.user.create') }}" class="btn btn-block btn-primary">Добавить</a>
-                </div>
                 <div class="col-12">
                     <div class="card">
                         <!-- /.card-header -->
@@ -41,39 +45,26 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
-                                            <thead>
-                                                <tr>
-                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                        ID
-                                                    </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                        Название
-                                                    </th>
-                                                    <th class="sorting" colspan="2" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                        Действие
-                                                    </th>
-                                                </tr>
-                                            </thead>
+
                                             <tbody>
-                                                @foreach($users as $user)
+
                                                 <tr class="odd">
                                                     <td class="dtr-control sorting_1" tabindex="0">
-                                                        {{ $user->id }}
+                                                        ID
                                                     </td>
                                                     <td>
-                                                        {{ $user->name }}
-                                                    </td>
-                                                    <td><a href="{{ route('admin.user.show', $user->id) }}">Show</a></td>
-                                                    <td><a href="{{ route('admin.user.edit', $user->id) }}">Edit</a></td>
-                                                    <td>
-                                                        <form action="{{ route('admin.user.delete', $user->id) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-button text-danger">Удалить</button>
-                                                        </form>
+                                                        {{ $post->id }}
                                                     </td>
                                                 </tr>
-                                                @endforeach
+                                                <tr class="odd">
+                                                    <td class="dtr-control sorting_1" tabindex="0">
+                                                        Название
+                                                    </td>
+                                                    <td>
+                                                        {{ $post->title }}
+                                                    </td>
+                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>

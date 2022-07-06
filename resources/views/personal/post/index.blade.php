@@ -8,13 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Пользователи</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Админка</a></li>
-                        <li class="breadcrumb-item active">Пользователи</li>
-                    </ol>
+                    <h1 class="m-0">Статьи</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -27,7 +21,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-3 mb-3">
-                    <a href="{{ route('admin.user.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                    <a href="{{ route('admin.post.create') }}" class="btn btn-block btn-primary">Добавить</a>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -55,18 +49,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($users as $user)
+                                                @foreach($posts as $post)
                                                 <tr class="odd">
                                                     <td class="dtr-control sorting_1" tabindex="0">
-                                                        {{ $user->id }}
+                                                        {{ $post->id }}
                                                     </td>
                                                     <td>
-                                                        {{ $user->name }}
+                                                        {{ $post->title }}
                                                     </td>
-                                                    <td><a href="{{ route('admin.user.show', $user->id) }}">Show</a></td>
-                                                    <td><a href="{{ route('admin.user.edit', $user->id) }}">Edit</a></td>
+                                                    <td><a href="{{ route('admin.post.show', $post->id) }}">Show</a></td>
+                                                    <td><a href="{{ route('admin.post.edit', $post->id) }}">Edit</a></td>
                                                     <td>
-                                                        <form action="{{ route('admin.user.delete', $user->id) }}" method="POST">
+                                                        <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-button text-danger">Удалить</button>

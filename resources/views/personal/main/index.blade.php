@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -29,12 +29,12 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{ $counts['usersCount'] }}</h3>
+                            <h3>10</h3>
 
-                            <p>Пользователи</p>
+                            <p>Понравившиеся посты</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-users"></i>
+                            <i class="far fa-heart"></i>
                             <i class="ion ion-bag"></i>
                         </div>
                         <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
@@ -45,50 +45,18 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{ $counts['postsCount'] }}</h3>
+                            <h3>10</h3>
 
-                            <p>Статьи</p>
+                            <p>Комментарии</p>
                         </div>
                         <div class="icon">
-                            <i class="nav-icon far fa-clipboard"></i>
+                            <i class="nav-icon far fa-comment"></i>
                             <i class="ion ion-stats-bars"></i>
                         </div>
                         <a href="{{ route('admin.post.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $counts['categoriesCount'] }}</h3>
 
-                            <p>Категории</p>
-                        </div>
-                        <div class="icon">
-                            <i class="nav-icon fas fa-th-list"></i>
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="{{ route('admin.category.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{ $counts['tagsCount'] }}</h3>
-
-                            <p>Тэги</p>
-                        </div>
-                        <div class="icon">
-                            <i class="nav-icon fas fa-tags"></i>
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="{{ route('admin.tag.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
             </div>
 
         </div><!-- /.container-fluid -->
