@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', IndexController::class);
+Route::group(['namespace' => 'Main'], function () {
+    Route::get('/', IndexController::class)->name('main.index');
+});
 
 Route::group([
         'namespace' => '\App\Http\Controllers\Personal',
@@ -34,6 +36,9 @@ Route::group([
 
         Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function () {
             Route::get('/', 'IndexController')->name('personal.comment.index');
+            Route::get('/{comment}/edit', 'EditController')->name('personal.comment.edit');
+            Route::patch('/{comment}', 'UpdateController')->name('personal.comment.update');
+            Route::delete('/{comment}', 'DeleteController')->name('personal.comment.delete');
         });
 });
 
