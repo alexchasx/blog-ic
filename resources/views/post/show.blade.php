@@ -156,14 +156,14 @@
                                 <div class="related-ready">
                                     <ul class="related-posts">
 
-                                        @foreach($relatedPosts as $post)
+                                        @foreach($relatedPosts as $relatedPost)
 
                                         <li class="related-item item-0">
                                             <div class="post-image-wrap">
-                                                <a class="post-image-link" href="{{ route('post.show', $post->id) }}"></a>
+                                                <a class="post-image-link" href="{{ route('post.show', $relatedPost->id) }}"></a>
                                             </div>
                                             <h2 class="post-title">
-                                                <a href="{{ route('post.show', $post->id) }}">
+                                                <a href="{{ route('post.show', $relatedPost->id) }}">
                                                     {{ $post->title }}
                                                 </a>
                                             </h2>
@@ -180,8 +180,33 @@
                     <div class="blog-post-comments comments-system-blogger" style="display: block;">
 
                         <div class="title-wrap comments-title">
-                            <h3>Post a Comment</h3>
+                            <h3>Комментарии ({{ $post->comments->count() }})</h3>
+
+                            @foreach($post->comments as $comment)
+                            <div>{{ $comment->user->name }}</div>
+                            <p>{{ $comment->dateAsCarbon->diffForHumans() }}</p>
+                            <p>{{ $comment->message }}</p>
+                            <hr>
+                            @endforeach
                         </div>
+
+                        @auth
+                        <div>
+                            <h2>Отправить комментарий</h2>
+                            <form action="{{ route('post.comment.store', $post->id) }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="comment">Comment</label>
+                                        <textarea name="message" id="comment" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                <input type="submit" valie="Отправить" class="btn btn-warning">
+                            </form>
+                        </div>
+                        @endauth
+
                         <section class="comments embed" data-num-comments="0" id="comments">
                             <a name="comments"></a>
                             <h3 class="title">0
