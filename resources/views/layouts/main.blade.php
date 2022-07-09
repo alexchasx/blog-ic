@@ -184,8 +184,8 @@
             <div class="header-menu">
                 <div class="mobile-menu">
                     <ul id="main-menu-nav" role="menubar">
-                        <li><a href="/" role="menuitem">Home</a></li>
-                        <li class="has-sub"><a href="#" role="menuitem">Features</a>
+                        <li><a href="{{ route('main.index') }}" role="menuitem">Блог</a></li>
+                        <li class="has-sub"><a href="{{ route('category.index') }}" role="menuitem">Категории</a>
                             <ul class="sub-menu m-sub">
                                 <li class="has-sub"><a href="#" role="menuitem">Multi DropDown</a>
                                     <ul class="sub-menu2 m-sub">
@@ -201,12 +201,6 @@
                             </ul>
                             <div class="submenu-toggle"></div>
                         </li>
-
-
-
-
-
-
 
                         <li><a href="/search/label/recent?&amp;max-results=5" role="menuitem">Mega Menu</a></li>
                         <li class="has-sub"><a href="/p/documentation.html" role="menuitem">Documentation</a>
@@ -226,8 +220,8 @@
                     <div class="main-menu section" id="main-menu" name="Main Menu">
                         <div class="widget LinkList show-menu" data-version="2" id="LinkList74">
                             <ul id="main-menu-nav" role="menubar">
-                                <li><a href="/" role="menuitem">Home</a></li>
-                                <li class="has-sub"><a href="#" role="menuitem">Features</a>
+                                <li><a href="{{ route('main.index') }}" role="menuitem">Блог</a></li>
+                                <li class="has-sub"><a href="{{ route('category.index') }}" role="menuitem">Категории</a>
                                     <ul class="sub-menu m-sub">
                                         <li class="has-sub"><a href="#" role="menuitem">Multi DropDown</a>
                                             <ul class="sub-menu2 m-sub">
@@ -241,12 +235,6 @@
                                         <li><a href="https://nitro-soratemplates.blogspot.com/soratemplates" role="menuitem">Error Page</a></li>
                                     </ul>
                                 </li>
-
-
-
-
-
-
 
                                 <li class="has-sub mega-menu"><a href="/search/?&amp;max-results=5" role="menuitem">Mega Menu</a>
                                     <ul class="mega-menu-inner">
@@ -615,13 +603,13 @@
                             <div class="widget-content cloud-label">
                                 <ul>
                                     <li>
-                                        <a class="label-name" href="https://nitro-soratemplates.blogspot.com/search/label/Business?&amp;max-results=5">
-                                            Business
+                                        <a class="label-name" href="{{ route('main.index') }}">
+                                            Блог
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="label-name" href="https://nitro-soratemplates.blogspot.com/search/label/Food?&amp;max-results=5">
-                                            Food
+                                        <a class="label-name" href="{{ route('category.index') }}">
+                                            Категории
                                         </a>
                                     </li>
                                     <li>

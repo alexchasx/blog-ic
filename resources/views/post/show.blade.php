@@ -149,6 +149,8 @@
                                     <!--Can't find substitution for tag [post.author.aboutMe]-->
                                 </span>
                             </div>
+
+                            @if($relatedPosts->count() > 0)
                             <div id="related-wrap">
                                 <div class="title-wrap">
                                     <h3>Похожие посты</h3>
@@ -175,9 +177,30 @@
                                     </ul>
                                 </div>
                             </div>
+                            @endif
+
                         </div>
                     </div>
                     <div class="blog-post-comments comments-system-blogger" style="display: block;">
+
+                        <section>
+                            @auth()
+                            <form action="{{ route('post.like.store', $post->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent">
+                                    @if(auth()->user()->likedPosts->contains($post->id))
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                    @else
+                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            @endauth
+                            @guest()
+                            <span>{{ $post->liked_users_count }}</span>
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            @endguest
+                        </section>
 
                         <div class="title-wrap comments-title">
                             <h3>Комментарии ({{ $post->comments->count() }})</h3>
