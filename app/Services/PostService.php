@@ -19,7 +19,7 @@ class PostService
             }
 
             $data['preview_image'] = $request->file('preview_image')
-            ->store('uploads', 'public');
+                ->store('uploads', 'public');
             $data['main_image'] = $request->file('main_image')
                 ->store('uploads', 'public');
 
@@ -33,6 +33,8 @@ class PostService
             DB::rollBack();
             abort(500);
         }
+
+        return $post;
     }
 
     public function update($data, $request, $post)
